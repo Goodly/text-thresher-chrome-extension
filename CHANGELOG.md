@@ -7,5 +7,6 @@
 ###### 0.0.1
 * BREAKING CHANGES
 * completely revised project structure
-* setup Webpack, React &
+* setup Webpack, React & Coffe-React
+* App Scaffolding
 

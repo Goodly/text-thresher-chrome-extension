@@ -1,6 +1,4 @@
-# See example gulpfile.js for file system development build:
-# https://github.com/webpack/webpack-with-common-libs/blob/master/gulpfile.js
-
+# Required modules
 gulp = require 'gulp'
 gutil = require 'gulp-util'
 coffee = require 'gulp-coffee'
@@ -8,11 +6,13 @@ webpack = require 'webpack'
 WebpackDevServer = require 'webpack-dev-server'
 webpackConfig = require './webpack.config.coffee'
 
+# Watch paths
 paths = {
   scripts: [
     './src/scripts/**/*.{jsx,coffee,cjsx}'
   ]
 }
+
 # Default task
 gulp.task 'default', ['watch', 'webpack:build'], ->
 
@@ -20,7 +20,6 @@ gulp.task 'build', ['webpack:build'], ->
 
 gulp.task 'watch', ->
   gulp.watch paths.scripts, ['webpack:build']
-
 
 # gulp.task 'scripts', () ->
 #   gulp.src(paths.scripts)

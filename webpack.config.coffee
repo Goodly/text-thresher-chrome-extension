@@ -72,6 +72,7 @@ module.exports =
   noparse: [
     "#{bowerComponentsPath}/jquery/"
     "#{bowerComponentsPath}/modernizr"
+    "node_modules"
   ]
   plugins: [
     new webpack.HotModuleReplacementPlugin()
