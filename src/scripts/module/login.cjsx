@@ -1,10 +1,11 @@
 React = require 'react/addons'
+Button = require 'react-bootstrap/Button'
 
 Login = React.createClass
 
   render: ->
     <div>
-      <h4>Sign In to Your Project</h4>
+      <Button bsStyle= "primary">Login</Button>
     </div>
 
 module.exports = Login

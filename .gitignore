@@ -7,3 +7,4 @@ bower_components/
 bower_components/
 package
 .DS_Store
+npm-debug.log

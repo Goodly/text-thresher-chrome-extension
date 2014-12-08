@@ -1,5 +1,5 @@
 var React = require('react');
-var Popup = require('cjsx!./modules/popup');
+var Popup = require('cjsx!./module/popup');
 
 React.renderComponent((
   <Popup/>

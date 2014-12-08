@@ -17,29 +17,29 @@
     "default_popup": "dist/popup.html"
   },
    "background": {
-      "scripts": [
-      "dist/scripts/chromereload.js",
-      "dist/scripts/background.js"
-      ]
+      "persistent": false,
+      "scripts": ["dist/scripts/event.js"]
    },
   "options_page": "dist/options.html",
   "omnibox": {
-    "keyword": "thresher"
+    "keyword": "txt"
   },
-  "content_scripts": [
-    {
-      "matches": [
-        "http://*/*",
-        "https://*/*"
-      ],
-      "js": [
-        "dist/scripts/contentscript.js"
-      ],
-      "run_at": "document_end",
-      "all_frames": false
-    }
-  ],
+  // "content_scripts": [
+  //   {
+  //     "matches": [
+  //       "http://*/*",
+  //       "https://*/*"
+  //     ],
+  //     "js": [
+  //       "dist/scripts/contentscript.js"
+  //     ],
+  //     "run_at": "document_end",
+  //     "all_frames": false
+  //   }
+  // ],
   "permissions": [
+    "activeTab",
+    "storage",
     "tabs",
     "management",
     "http://*/*",
