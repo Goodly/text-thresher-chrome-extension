@@ -1,0 +1,6 @@
+/* TODO: remove this file and allow for natural compiling once you've wired up the stylesheet in src and have the watcher building it */
+body {
+  padding: 0 20px;
+  width: 200px;
+}
+

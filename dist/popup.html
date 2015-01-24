@@ -1,0 +1,30 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <!--<link href="styles/vendor.css" rel="stylesheet"> -->
+    <link href="styles/main.css" rel="stylesheet">
+    <link href="styles/dist/css/bootstrap.css" rel="stylesheet">
+    <link rel="stylesheet" href="http://assets.annotateit.org/annotator/v1.2.5/annotator.min.css">
+    <script src="scripts/vendor.js"></script>
+    <script src="scripts/popup-example.js"></script>
+  </head>
+<body>
+  <div id="react-root"></div>
+        <form id="addbookmark">
+            <p><label for="title">Title</label><br />
+            <input type="text" id="title" name="title" size="50" value="" /></p>
+            <p><label for="url">Url</label><br />
+            <input type="text" id="url" name="url" size="50" value="" /></p>
+            <p><label for="summary">Summary</label><br />
+            <textarea id="summary" name="summary" rows="6" cols="35"></textarea></p>
+            <p><label for="tags">Tags</label><br />
+            <input type="text" id="tags" name="tags" size="50" value="" /></p>
+            <p>
+                <input id="save" type="submit" value="Save Bookmark" />
+                <span id="status-display"></span>
+            </p>
+        </form>
+    </body>
+  <script src="scripts/moduleBundle.js"></script>
+</html>
