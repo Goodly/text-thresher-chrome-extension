@@ -9,6 +9,15 @@ webpackConfig = require './webpack.config.coffee'
 
 # Watch paths
 paths = {
+  assets: [
+    './src/**/*.{html,png}'
+  ],
+  styles: [
+    './src/styles/**/*.css'
+  ],
+  scripts: [
+    './src/scripts/**/*.{jsx,cjsx,coffee,js}'
+  ],
   webpackScripts: [
     './src/scripts/**/*.{jsx,cjsx,coffee}'
   ],
@@ -17,21 +26,35 @@ paths = {
   ]
 }
 
-# Default: Runs A CLEAN TASK then initializes our WATCHER
-gulp.task 'default', ['watch'], ->
+# Default: Runs an INITIAL COPY TASK then initializes our WATCHER
+gulp.task 'default', ['build', 'watch'], ->
 
-# Task to clean the dist/scripts folder and run a fresh build
-gulp.task 'build', ['webpack:build', 'js:copy'], ->
+# Task to build the dist folder on initial load
+gulp.task 'build', ['assets:copy', 'styles:copy', 'webpack:build', 'js:copy'], ->
 
+# The watcher task which polls for changes to our scripts files
 gulp.task 'watch', ->
   gulp.watch paths.webpackScripts, ['webpack:build']
   gulp.watch paths.vanillaScripts, ['js:copy']
 
+
+# Task to clean the dist directory
 gulp.task 'clean', (callback) ->
   del [
-    'dist/scripts/**'
+    'dist/**'
   ], callback
 
+# Task to copy vanilla JS files
+gulp.task 'assets:copy', ->
+  gulp.src(paths.assets)
+    .pipe gulp.dest('./dist')
+
+# Task to copy vanilla JS files
+gulp.task 'styles:copy', ->
+  gulp.src(paths.styles)
+    .pipe gulp.dest('./dist/styles')
+
+# Task to copy vanilla JS files
 gulp.task 'js:copy', ->
   gulp.src(paths.vanillaScripts)
     .pipe gulp.dest('./dist/scripts')
