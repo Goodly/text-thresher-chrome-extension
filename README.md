@@ -8,18 +8,29 @@ Text Thresher is a web application for researcher-directed crowd annotation of t
 
 ### Setup
 
-To setup this extension for development in your local environment.
+To develop in this repository in your local environment or build the extension.
 
 * Clone the git repository to your local machine.
+* Make sure `npm`, `bower`, `node`, and `gulp` are all installed globally on your machine.
+* Run `npm install` and `bower install` in the project directory
+
+### Building the Extension
+
+To build the chrome extension so it can be installed in the browser.
+
+* Run `gulp` from the command line which will run both the build assembly and the file watcher tool.
+
+* If you've already installed the extension, refresh your browswer to see your changes.
+
+### Installing the Extension
+
+To install this extension so it will run in your chrome browser.
+
 * Open `chrome://extensions` in your Google Chrome browser and in the top right-hand corner tick the `Developer Mode` checkbox.
-* You should now see a box marked `Load Unpacked Extensions`. Click on that and navigate to the project directory and click `Ok`.
+
+* You should now see a box marked `Load Unpacked Extensions`. Click on that and navigate to the top-level project directory and click `Ok`.
+
+* You may see warnings about keyfiles like `foo.pem` being included in the repository. Don't worry--it's not insecure, these are just test files!
+
 * You should now have the extension loaded up in the extensions panel and an icon in your toolbar that will open the popup.
 
-### Development
-
-To develop in this repository.
-
-* Run `npm install` and `bower install` in the project directory
-* Run `gulp` from the command line which will run both the file watcher and the build assembly too.
-* For the time being, touch either `bundle.jsx` or `vendor.coffee` to kick off a new build for the popup.
-* Refresh your browswer to see your changes.
