@@ -12,6 +12,7 @@ Popup = React.createClass
   render: ->
     <div>
       <Login/>
+      <EditTUA/>
     </div>
 
 module.exports = Popup

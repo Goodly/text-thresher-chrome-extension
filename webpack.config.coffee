@@ -3,7 +3,7 @@
 
 path = require 'path'
 webpack = require 'webpack'
-bowerComponentsPath = path.join(__dirname, '/dist/scripts/vendor/bower_components')
+bowerComponentsPath = path.join(__dirname, '/src/scripts/vendor/bower_components')
 
 # resolveBowerPath = (componentPath) ->
 #   path.join __dirname, "bower_components", componentPath
@@ -18,11 +18,12 @@ module.exports =
   cache: true
 
   entry:
+    vendor: './src/scripts/vendor'
+    moduleBundle: './src/scripts/moduleBundle'
+    contentscript: './src/scripts/contentScript'
+    # bundle: ['./src/scripts/bundle', 'webpack/hot/dev-server', 'webpack-dev-server/client?http://localhost:3030']
     # background: './src/scripts/background'
     # contentscript: './src/scripts/contentscript'
-    vendor: './src/scripts/vendor'
-    bundle: ['./src/scripts/bundle']
-    # bundle: ['./src/scripts/bundle', 'webpack/hot/dev-server', 'webpack-dev-server/client?http://localhost:3030']
   output:
     path: path.join(__dirname, 'dist/scripts')
     publicPath: 'dist/scripts'
@@ -70,8 +71,7 @@ module.exports =
 
     ]
   noparse: [
-    "#{bowerComponentsPath}/jquery/"
-    "#{bowerComponentsPath}/modernizr"
+    "#{bowerComponentsPath}"
     "node_modules"
   ]
   plugins: [
