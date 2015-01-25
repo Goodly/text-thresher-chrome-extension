@@ -10,7 +10,7 @@ webpackConfig = require './webpack.config.coffee'
 # Watch paths
 paths = {
   assets: [
-    './src/**/*.{html,png}'
+    './src/**/*.{html,png,eot,svg,ttf,woff}'
   ],
   styles: [
     './src/styles/**/*.css'
@@ -34,6 +34,7 @@ gulp.task 'build', ['assets:copy', 'styles:copy', 'webpack:build', 'js:copy'], -
 
 # The watcher task which polls for changes to our scripts files
 gulp.task 'watch', ->
+  gulp.watch paths.assets, ['assets:copy']
   gulp.watch paths.webpackScripts, ['webpack:build']
   gulp.watch paths.vanillaScripts, ['js:copy']
 
