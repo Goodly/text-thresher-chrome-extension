@@ -1,15 +1,6 @@
-# See webpack.config.js for more examples:
-# https://github.com/webpack/webpack-with-common-libs/blob/master/webpack.config.js
-
 path = require 'path'
 webpack = require 'webpack'
-bowerComponentsPath = path.join(__dirname, '/src/scripts/vendor/bower_components')
-
-# resolveBowerPath = (componentPath) ->
-#   path.join __dirname, "bower_components", componentPath
-
-# webpack-dev-server options used in gulpfile
-# https://github.com/webpack/webpack-dev-server
+bowerComponentsPath = path.join(__dirname, '/src/vendor/bower_components')
 
 module.exports =
 
@@ -18,12 +9,9 @@ module.exports =
   cache: true
 
   entry:
-    vendor: './src/scripts/vendor'
     moduleBundle: './src/scripts/moduleBundle'
-    contentscript: './src/scripts/contentScript'
     # bundle: ['./src/scripts/bundle', 'webpack/hot/dev-server', 'webpack-dev-server/client?http://localhost:3030']
-    # background: './src/scripts/background'
-    # contentscript: './src/scripts/contentscript'
+
   output:
     path: path.join(__dirname, 'dist/scripts')
     publicPath: 'dist/scripts'
@@ -31,8 +19,8 @@ module.exports =
     chunkFilename: '[chunkhash].js'
 
   resolve:
-    extensions: ['', '.webpack.js', '.web.js', '.coffee', '.js', '.scss', '.sass', '.jsx', '.coffee', '.cjsx']
-    modulesDirectories: ['./src/scripts', 'web_modules', bowerComponentsPath, 'node_modules']
+    extensions: ['', '.webpack.js', '.web.js', '.coffee', '.js', '.css', '.scss', '.sass', '.jsx', '.cjsx']
+    modulesDirectories: ['./src/scripts', 'web_modules', bowerComponentsPath, 'node_modules', './src/styles']
 
   module:
     loaders: [
@@ -82,8 +70,6 @@ module.exports =
         console.error JSON.stringify
           assetsByChunkName: stats.assetsByChunkName
   ]
-
-
 
 # module.exports = {
 #     entry: ['webpack/hot/dev-server', './client'],
