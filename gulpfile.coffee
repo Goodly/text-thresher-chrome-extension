@@ -34,7 +34,7 @@ paths = {
 gulp.task 'default', ['build', 'watch'], ->
 
 # Task to build the dist folder on initial load
-gulp.task 'build', ['assets:copy', 'webpack:build', 'js:copy'], ->
+gulp.task 'build', ['assets:copy', 'webpack:build', 'js:copy', 'coffee:compile'], ->
 
 # The watcher task which polls for changes to our scripts files
 gulp.task 'watch', ->
