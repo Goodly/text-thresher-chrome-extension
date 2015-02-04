@@ -13,8 +13,7 @@
       "19": "dist/images/icon-19.png",
       "38": "dist/images/icon-38.png"
     },
-    "default_title": "text-thresher",
-    "default_popup": "dist/popup.html"
+    "default_title": "text-thresher"
   },
    "background": {
       "persistent": false,
@@ -24,19 +23,20 @@
   "omnibox": {
     "keyword": "txt"
   },
-  // "content_scripts": [
-  //   {
-  //     "matches": [
-  //       "http://*/*",
-  //       "https://*/*"
-  //     ],
-  //     "js": [
-  //       "dist/scripts/contentscript.js"
-  //     ],
-  //     "run_at": "document_end",
-  //     "all_frames": false
-  //   }
-  // ],
+  "content_scripts": [
+    {
+      "matches": [
+        "http://*/*",
+        "https://*/*"
+      ],
+      "js": [
+        "dist/scripts/contentscript.js"
+      ],
+      "run_at": "document_end",
+      "all_frames": false
+    }
+  ],
+  "web_accesible_resources": ["dist/scripts/moduleBundle.js"],
   "permissions": [
     "activeTab",
     "storage",

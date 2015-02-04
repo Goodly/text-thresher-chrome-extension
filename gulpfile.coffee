@@ -3,6 +3,7 @@ gulp = require 'gulp'
 gutil = require 'gulp-util'
 del = require 'del'
 coffee = require 'gulp-coffee'
+plumber = require 'gulp-plumber'
 webpack = require 'webpack'
 WebpackDevServer = require 'webpack-dev-server'
 webpackConfig = require './webpack.config.coffee'
@@ -10,7 +11,7 @@ webpackConfig = require './webpack.config.coffee'
 # Watch paths
 paths = {
   assets: [
-    './src/**/*.{html,png,eot,svg,ttf,woff}'
+    './src/**/*.{html,png}', '!./src/vendor/**/*.{html,png}'
   ],
   styles: [
     './src/styles/**/*.css'
@@ -19,10 +20,13 @@ paths = {
     './src/scripts/**/*.{jsx,cjsx,coffee,js}'
   ],
   webpackScripts: [
-    './src/scripts/**/*.{jsx,cjsx,coffee}'
+    './src/scripts/**/*.{jsx,cjsx}', './src/styles/**/*.{css,scss}'
   ],
   vanillaScripts: [
     './src/scripts/**/*.js'
+  ],
+  coffeeScripts: [
+    './src/scripts/**/*.coffee'
   ]
 }
 
@@ -30,13 +34,14 @@ paths = {
 gulp.task 'default', ['build', 'watch'], ->
 
 # Task to build the dist folder on initial load
-gulp.task 'build', ['assets:copy', 'styles:copy', 'webpack:build', 'js:copy'], ->
+gulp.task 'build', ['assets:copy', 'webpack:build', 'js:copy'], ->
 
 # The watcher task which polls for changes to our scripts files
 gulp.task 'watch', ->
   gulp.watch paths.assets, ['assets:copy']
   gulp.watch paths.webpackScripts, ['webpack:build']
   gulp.watch paths.vanillaScripts, ['js:copy']
+  gulp.watch paths.coffeeScripts, ['coffee:compile']
 
 
 # Task to clean the dist directory
@@ -45,26 +50,24 @@ gulp.task 'clean', (callback) ->
     'dist/**'
   ], callback
 
-# Task to copy vanilla JS files
+# Task to copy HTML files
 gulp.task 'assets:copy', ->
   gulp.src(paths.assets)
     .pipe gulp.dest('./dist')
-
-# Task to copy vanilla JS files
-gulp.task 'styles:copy', ->
-  gulp.src(paths.styles)
-    .pipe gulp.dest('./dist/styles')
 
 # Task to copy vanilla JS files
 gulp.task 'js:copy', ->
   gulp.src(paths.vanillaScripts)
     .pipe gulp.dest('./dist/scripts')
 
-# gulp.task 'coffee:compile', () ->
-#   gulp.src(paths.coffeeScripts)
-#     .pipe(coffee(bare:true).on('error', gutil.log))
-#     .pipe gulp.dest('./dist/scripts')
+# Task to compile and copy over coffeescripts
+gulp.task 'coffee:compile', () ->
+  gulp.src(paths.coffeeScripts)
+    .pipe(plumber())
+    .pipe(coffee(bare:true).on('error', gutil.log))
+    .pipe gulp.dest('./dist/scripts')
 
+# Task to kick off Webpack Module Build
 gulp.task 'webpack:build', (callback) ->
   # modify some webpack config options
   conf = Object.create(webpackConfig)
@@ -76,7 +79,7 @@ gulp.task 'webpack:build', (callback) ->
   # run webpack
   webpack conf, (err, stats) ->
     throw new gutil.PluginError('webpack:build', err) if err
-    gutil.log '[webpack:build]', stats.toString colors: true
+    gutil.log '[webpack:build]', stats.toString colors: true, cached: false
     callback()
 
 # TODO: invenstigate whether we can get hot module replacement talking to the the chrome livereload script

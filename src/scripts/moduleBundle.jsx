@@ -1,3 +1,5 @@
+require ('../styles/main.css')
+
 var React = require('react');
 var Popup = require('cjsx!./module/popup');
 
