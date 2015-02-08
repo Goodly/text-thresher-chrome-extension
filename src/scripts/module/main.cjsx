@@ -12,10 +12,18 @@ TUAItemTextInput = require 'cjsx!./tua-item-text-input'
 Buttons = require 'cjsx!./buttons'
 Timer = require 'jsx!./example-modules/timer'
 
-Popup = React.createClass
+Main = React.createClass
 
   componentDidMount: ->
     $('html').annotator()
+             .annotator('setupPlugins');
+
+    # content.annotator 'addPlugin', 'Store',
+    #   prefix: '/store/endpoint'
+    #   annotationData: 'uri': 'http://this/document/only'
+    #   loadFromSearch:
+    #     'limit': 20
+    #     'uri': 'http://this/document/only'
 
   render: ->
     <div>
@@ -24,4 +32,4 @@ Popup = React.createClass
       <EditTUA/>
     </div>
 
-module.exports = Popup
+module.exports = Main
