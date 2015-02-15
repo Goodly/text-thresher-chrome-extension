@@ -1,8 +1,8 @@
 require ('../styles/main.css')
 
 var React = require('react');
-var Popup = require('cjsx!./module/popup');
+var Main = require('cjsx!./module/main');
 
 React.renderComponent((
-  <Popup/>
+  <Main/>
 ), document.getElementById('react-root'));

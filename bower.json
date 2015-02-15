@@ -4,7 +4,9 @@
   "dependencies": {
     "annotator": "~1.2.9",
     "jquery": "~2.1.0",
-    "modernizr": "~2.8.3"
+    "modernizr": "~2.8.3",
+    "bootstrap-sass": "~3.3.3",
+    "bootstrap": "~3.3.2"
   },
   "devDependencies": {}
 }

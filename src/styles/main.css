@@ -1,6 +1,7 @@
 @import url('../vendor/bower_components/annotator/annotator.min.css');
-/* TODO: investigate loaders for bootstrap fonts. for now it's commented out. */
-/*@import url('../vendor/bower_components/bootstrap/dist/css/bootstrap.min.css');*/
+/* TODO: investigate namespacing boostrap seletors */
+@import url('../vendor/bower_components/bootstrap/dist/css/bootstrap.min.css');
+
 
 #react-root {
   position: fixed;
