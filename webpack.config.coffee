@@ -38,17 +38,22 @@ module.exports =
         test: /\.coffee$/
         loader: 'coffee-loader'
       }
-      {
-        test: /\.scss$/
-        loader: "style-loader!sass-loader?outputStyle=expanded&includePaths[]=./bower_components/bootstrap-sass/assets/stylesheets"
-      }
-      {
-        test: /\.sass$/
-        loader: "style-loader!sass-loader"
-      }
+      # {
+      #   test: /\.scss$/
+      #   loader: "style-loader!sass-loader?outputStyle=expanded&includePaths[]=./bower_components/bootstrap-sass/assets/stylesheets"
+      # }
+      # {
+      #   test: /\.sass$/
+      #   loader: "style-loader!sass-loader"
+      # }
       {
         test: /\.css$/
         loader: 'style-loader!css-loader'
+      }
+      {
+        test: /\.{scss|sass}$/
+        # Passing indentedSyntax query param to node-sass
+        loader: "?outputStyle=expanded&indentedSyntax=sass"
       }
       {
         test: /\.(png|woff|woff2|eot|ttf|svg)$/

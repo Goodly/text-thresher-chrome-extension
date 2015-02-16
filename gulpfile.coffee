@@ -20,7 +20,7 @@ paths = {
     './src/scripts/**/*.{jsx,cjsx,coffee,js}'
   ],
   webpackScripts: [
-    './src/scripts/**/*.{jsx,cjsx}', './src/styles/**/*.{css,scss}'
+    './src/scripts/**/*.{jsx,cjsx}', './src/styles/**/*.{css,scss,sass}'
   ],
   vanillaScripts: [
     './src/scripts/**/*.js'
@@ -73,7 +73,7 @@ gulp.task 'webpack:build', (callback) ->
   conf = Object.create(webpackConfig)
   conf.plugins = conf.plugins.concat new webpack.DefinePlugin
     'process.env':
-      NODE_ENV: JSON.stringify('production')
+      NODE_ENV: JSON.stringify('__DEV__')
   , new webpack.optimize.DedupePlugin(), new webpack.optimize.UglifyJsPlugin()
 
   # run webpack
