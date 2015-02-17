@@ -2,13 +2,26 @@
 /* TODO: investigate namespacing boostrap seletors */
 @import url('../vendor/bower_components/bootstrap/dist/css/bootstrap.min.css');
 
-
-#react-root {
+.react-module {
   position: fixed;
-  top: 20px;
-  right: 20px;
-  background: white;
-  border: 2px solid black;
-  padding: 10px;
+  top: 25px;
   z-index: 9999;
+  padding: 10px;
+  transition: right 0.5s ease-out;
 }
+
+.react-module > div {
+  float: left;
+  margin-right: 5px;
+}
+
+.login-inputs {
+  display: block;
+}
+
+.login-button {
+  display: block;
+  width: 100%;
+}
+
+

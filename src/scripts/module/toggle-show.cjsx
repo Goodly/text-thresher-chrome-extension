@@ -3,11 +3,11 @@ Button = require 'react-bootstrap/Button'
 Glyphicon = require 'react-bootstrap/Glyphicon'
 
 
-EditTUA = React.createClass
+ToggleShow = React.createClass
 
   render: ->
     <div>
-      <Button title= "Edit"><Glyphicon glyph= "pencil" /></Button>
+      <Button title= "Toggle" onClick={@props.onToggleShow}><Glyphicon glyph= "remove" /></Button>
     </div>
 
-module.exports = EditTUA
+module.exports = ToggleShow
