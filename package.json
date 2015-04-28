@@ -9,6 +9,7 @@
   "contributors": "https://github.com/Goodly/text-thresher-chrome-extension/graphs/contributors",
   "scripts": {
     "start": "gulp",
+    "dev": "node --harmony ./webpack.config.js",
     "install": "bower install"
   },
   "engines": {
@@ -23,18 +24,27 @@
     "react-router": "^0.10.2"
   },
   "devDependencies": {
+    "autoprefixer-core": "^5.1.8",
+    "babel": "^5.1.9",
+    "babel-core": "^5.1.9",
+    "babel-eslint": "^3.0.1",
+    "babel-loader": "^5.0.0",
     "bower": "^1.3.12",
-    "cjsx-loader": "^1.0.0",
-    "coffee-loader": "~0.7",
-    "coffee-script": "~1.7",
     "css-loader": "*",
+    "debug": "^2.1.3",
     "del": "^1.1.1",
+    "eslint": "^0.20.0",
+    "eslint-loader": "^0.11.1",
+    "eslint-plugin-react": "^2.2.0",
     "gulp": "^3.8.8",
     "gulp-coffee": "^2.2.0",
     "gulp-plumber": "^0.6.6",
     "gulp-util": "~2.2",
     "jade": "*",
+    "jscs": "^1.12.0",
+    "jscs-loader": "0.0.5",
     "parse": "^1.2.19",
+    "react-hot-loader": "^1.2.5",
     "react-tools": "^0.12.0",
     "sass-loader": "^0.4.0-beta.1",
     "script-loader": "~0.5",

@@ -1,2 +1,2 @@
-require('coffee-script/register');
-require('./gulpfile.coffee');
+require('babel/register');
+require('./gulpfile-es6.js');

@@ -1,2 +1,16 @@
-require('coffee-script/register');
-module.exports = require('./webpack.config.coffee');
+'use strict';
+
+require('babel/register');
+
+var debug = require('debug')('dev');
+var webpack = require('webpack');
+var WebpackDevServer = require('webpack-dev-server');
+
+var config = require('./webpack.config-es6');
+
+var compiler = webpack(config.webpack);
+var devServer = new WebpackDevServer(compiler, config.server.options);
+
+devServer.listen(config.server.port, 'localhost', function () {
+  debug('webpack-dev-server listen on port %s', config.server.port);
+});

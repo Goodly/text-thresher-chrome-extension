@@ -1,5 +1,6 @@
 @import url('../vendor/bower_components/annotator/annotator.min.css');
-/* TODO: investigate namespacing boostrap seletors */
+
+/* TODO: investigate namespacing boostrap selectors */
 @import url('../vendor/bower_components/bootstrap/dist/css/bootstrap.min.css');
 
 .react-module {

@@ -6,8 +6,6 @@ connection.onerror = (error) ->
   console.log 'reload connection got error' + JSON.stringify(error)
 
 connection.onmessage = (e) ->
-  data = undefined
-  data = undefined
   if e.data
     data = JSON.parse(e.data)
     if data and data.command == 'reload'
